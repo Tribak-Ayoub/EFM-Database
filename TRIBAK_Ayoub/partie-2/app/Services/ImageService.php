@@ -15,6 +15,13 @@ class ImageService
     public function incrementImageViews(ImageMotivation $image)
     {
         $image->increment('views');
+
+        $averageViews = ImageMotivation::average('views');
+        if($image->views > $averageViews){
+            return true;
+        } else{
+            return false;
+        }
     }
 
     public function incrementSupportViews(ImageMotivation $image)

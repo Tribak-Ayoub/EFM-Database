@@ -19,10 +19,10 @@ class ImageMotivationController extends Controller
     public function index()
     {
         $images = $this->imageService->getImagesWithSupport();
-
+        
         foreach ($images as $image) {
-
-
+            $image->isHighView = $this->imageService->incrementImageViews($image);
+            
             foreach ($image->supportMotivations as $support) {
                 if ($support->reactions > 5 && !$support->typeMotivations->contains('name', 'Encouragement')) {
                     $typeMotivation = new TypeMotivation(['name' => 'Encouragement']);

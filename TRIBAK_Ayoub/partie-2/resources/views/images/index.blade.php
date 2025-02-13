@@ -7,6 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Images</title>
+    <style>
+.high-views {
+    color: red; 
+}
+</style>
 </head>
 
 <body>
@@ -36,7 +41,7 @@
                                 {{ $typeMotivation->name }}@if (!$loop->last), @endif
                             @endforeach
                         </td>
-                        <td>{{ $image->views }}</td>  
+                        <td class="{{ $image->isHighView ? 'high-views' : '' }}" >{{ $image->views }}</td>  
 
                         <td>{{ $supportMotivation->views }}</td>  
                         <td>
